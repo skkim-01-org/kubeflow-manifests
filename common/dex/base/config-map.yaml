@@ -24,6 +24,13 @@ data:
       # FIXME: Use hashFromEnv instead
       username: user
       userID: "15841185641784"
+    # add default user
+    - email: skkim-01@tester.com
+      hash: $2y$12$4K/VkmDd1q1Orb3xAt82zu8gk7Ad6ReFR4LCP9UeYE90NLiN9Df72
+      username: skkim
+    - email: jykim-01@tester.com
+      hash: $2y$12$4K/VkmDd1q1Orb3xAt82zu8gk7Ad6ReFR4LCP9UeYE90NLiN9Df72
+      username: jykim
     staticClients:
     # https://github.com/dexidp/dex/pull/1664
     - idEnv: OIDC_CLIENT_ID
