@@ -77,7 +77,8 @@ spawnerFormDefaults:
     # Workspace Volume to be attached to user's Notebook
     # If you don't want a workspace volume then delete the 'value' key
     value:
-      mount: /home/jovyan
+      # Prevent notebook secure permission check 
+      mount: /home/jovyan/workspace
       newPvc:
         metadata:
           name: '{notebook-name}-workspace'
