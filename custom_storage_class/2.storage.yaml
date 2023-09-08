@@ -1,0 +1,27 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  # storage class 이름
+  name: sc-smb-kubeflow
+# storage class provisioner 이름
+provisioner: kubeflow.smb.csi.k8s.io
+parameters:
+  # samba server entry point
+  source: "//10.175.41.91/kubeflow"
+  # 이전 단계에서 만든 secret 입력
+  csi.storage.k8s.io/provisioner-secret-name: "smbcreds"
+  csi.storage.k8s.io/provisioner-secret-namespace: "kubeflow-sc"
+  csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
+  csi.storage.k8s.io/node-stage-secret-namespace: "kubeflow-sc"
+volumeBindingMode: Immediate
+reclaimPolicy: Retain
+# mount option: 추가 리서치 필요
+mountOptions:
+  - dir_mode=0644
+  - file_mode=0755
+  - uid=1000
+  - gid=100
+  - noperm
+  - mfsymlinks
+  - noserverino  # required to prevent data corruption
